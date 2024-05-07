@@ -69,7 +69,7 @@ export default function AdminLayout({children}: any) {
                     </div>
                     {/* SAIR */}
                     <div className="sidenav-footer mx-3 ">
-                        <p className="btn btn-primary btn-sm mb-0 w-100" onClick={handleSair}>Deslogar</p>
+                        <p className="btn btn-primary btn-sm mb-0 w-100" onClick={handleSair} style={{cursor: 'pointer'}}>Deslogar</p>
                     </div>
                 </aside>
                 

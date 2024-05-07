@@ -23,7 +23,7 @@ export default function FormulariosPage () {
                 
 
             <div className="card-header pb-0">
-              <h6>Usuários</h6>
+              <h6>Telas</h6>
             </div>
             <div className="card-body px-0 pt-0 pb-2">
               <div className="table-responsive p-0">
@@ -40,7 +40,7 @@ export default function FormulariosPage () {
                             <td>
                                 <div className="d-flex px-2 py-1">
                                     <div className="d-flex flex-column justify-content-center">
-                                        <h6 className="mb-0 text-sm">Formulário #{formulario}</h6>
+                                        <h6 className="mb-0 text-sm">Tela #{formulario}</h6>
                                     </div>
                                 </div>
                             </td>

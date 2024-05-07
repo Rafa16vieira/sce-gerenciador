@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { auth } from '@/config/firebase';
 
 const UsuarioContext = createContext<{usuario:any, setUsuario: any, carregado: boolean, deslogar: any}>({usuario: '', setUsuario: null, carregado: false, deslogar: null});
 
@@ -15,6 +16,7 @@ export const UsuarioProvider = ({ children }: any) => {
     // ---------
     const deslogar = async () => {
         localStorage.removeItem('usuario');
+        auth.signOut();
     }
     // ---------
     useEffect(() => {
