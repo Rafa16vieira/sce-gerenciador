@@ -4,14 +4,14 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA1wqCwrg2sC7Db4XtFxiq3fElUYhm4EHY",
-  authDomain: "cesmac-ws.firebaseapp.com",
-  databaseURL: "https://cesmac-ws.firebaseio.com",
-  projectId: "cesmac-ws",
-  storageBucket: "cesmac-ws.appspot.com",
-  messagingSenderId: "779438039625",
-  appId: "1:779438039625:web:1857236127d04d252e1598",
-  measurementId: "G-L0QCNVGXJV"
+  apiKey: process.env.firebase_apiKey,
+  authDomain: process.env.firebase_authDomain,
+  databaseURL: process.env.firebase_databaseURL,
+  projectId: process.env.firebase_projectId,
+  storageBucket: process.env.firebase_storageBucket,
+  messagingSenderId: process.env.firebase_messagingSenderId,
+  appId: process.env.firebase_appId,
+  measurementId: process.env.firebase_measurementId
 };
 
 // Initialize Firebase
