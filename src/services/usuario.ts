@@ -1,4 +1,6 @@
-
+import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth"
+import { auth, db } from '@/config/firebase';
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 
 const UsuarioService = {
 
@@ -9,22 +11,27 @@ const UsuarioService = {
      * @returns {usuario caso logado com sucesso, e o sucesso com um status de logado ou não}
      */
     logar: async(email: string, senha: string): Promise<{usuario?:any, sucesso:boolean}> => {
-        if (email == 'teste@teste.com' && senha == '123456') 
-            return {sucesso: true, usuario: { nome: 'Carlos', email }}
-        
-        return { sucesso: false }
+        return signInWithEmailAndPassword(auth, email, senha)
+            .then(async (retorno) => { 
+                //Verifica se o usuario não foi excluido do banco
+                const dados = await getDoc(doc(db, 'users', retorno.user.uid));
+                if (dados.exists())
+                    return { sucesso: true , usuario: retorno.user}
+                return { sucesso: false };
+            
+            })
+            .catch(erro => { return { sucesso: false }});
     },
 
     /**
-     * Função para recupera rsenha
+     * Função para recuperar senha
      * @param email 
      * @returns sucesso status booleano caso tenha conseguido solicitar nova senha
      */
     recuperarSenha: async (email: string): Promise<{sucesso: boolean}> => {
-        if (email == 'teste@teste.com') 
-            return {sucesso: true }
-        
-        return { sucesso: false }
+        return sendPasswordResetEmail(auth, email)
+            .then((retorno) => { return { sucesso: true }})
+            .catch(erro => { return { sucesso: false }});
     },
 
     /**
@@ -32,12 +39,15 @@ const UsuarioService = {
      * @returns 
      */
     buscarUsuarios: async (): Promise<any[]> => {
-        return [
-            { id: 1, nome: 'Carlos', email: 'carlos@teste.com', admin: true },
-            { id: 2, nome: 'Teste', email: 'teste@teste.com', admin: true },
-            { id: 3, nome: 'Maria', email: 'maria@teste.com', admin: false },
-            { id: 4, nome: 'Joao', email: 'joao@teste.com', admin: false },
-        ]
+        return getDocs(collection(db, 'users'))
+            .then(snapshots => {
+                const retorno: any[] = [];
+                snapshots.forEach(snap => {
+                    retorno.push(snap.data())
+                })
+                return retorno;
+            })
+            .catch(erro => [])
     },
 
     /**
@@ -45,8 +55,12 @@ const UsuarioService = {
      * @param id 
      * @returns 
      */
-    buscar: async (id: number): Promise<any>  => {
-        return { id: 1, nome: 'Carlos', email: 'carlos@teste.com', admin: true }
+    buscar: async (id: string): Promise<any>  => {
+        return getDoc(doc(db, 'users', id))
+            .then(retorno => { 
+                return (retorno.exists() ? retorno.data() : null)
+            })
+            .catch(erro => null)
     },
 
     /**
@@ -55,16 +69,32 @@ const UsuarioService = {
      * @returns 
      */
     cadastrar: async (usuario:any): Promise<{sucesso: boolean}> => {
-        return {sucesso: true}
+        return createUserWithEmailAndPassword(auth, usuario.email, usuario.senha)
+            .then(async retorno => {
+                usuario.uid = retorno.user.uid;
+                delete usuario.senha;
+
+                const usuarioDOC = doc(db, 'users', usuario.uid)
+
+                await setDoc(usuarioDOC, usuario);
+                return { sucesso: true };
+            })
+            .catch(erro => { return { sucesso: false} });
     },
     
     /**
-     * Edita usuário
+     * Excluir um usuario
      * @param usuario 
      * @returns 
      */
-    editar: async (usuario:any): Promise<{sucesso: boolean}> => {
-        return {sucesso: true}
+    excluir: async (usuario:any): Promise<{sucesso: boolean}> => {
+        return deleteDoc(doc(db, 'users', usuario.uid))
+            .then(retorno => {
+                return { sucesso: true }
+            })
+            .catch(erro => {
+                return { sucesso: false }
+            })
     }
 
 

@@ -13,6 +13,25 @@ export default function UsuariosPage () {
         setUsuarios(await usuariosSrv.buscarUsuarios())
     }
     // ----------
+    const handleResetarSenha = async (usuario:any) => {
+      const retorno = await usuariosSrv.recuperarSenha(usuario.email);
+      if (retorno.sucesso)
+        alert('Email enviado');
+      else
+        alert('Conta não encontrada');
+    }
+    // ----------
+    const handleDeletarConta = async (usuario: any) => {
+      if (confirm(`Deseja realmente excluir a conta de ${usuario.nome}(${usuario.email})?`)) {
+        const retorno = await usuariosSrv.excluir(usuario);
+        if (retorno.sucesso) {
+          setUsuarios(await usuariosSrv.buscarUsuarios())
+          alert('Conta deletada');
+        } else
+          alert('Conta não encontrada');
+      }
+    }
+    // ----------
     React.useEffect(() => {
         buscarUsuarios();
     }, []);
@@ -32,7 +51,6 @@ export default function UsuariosPage () {
                   <thead>
                     <tr>
                       <th className="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuário</th>
-                      <th className="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Admin</th>
                       <th className="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -47,14 +65,13 @@ export default function UsuariosPage () {
                                     </div>
                                 </div>
                             </td>
-                        <td className="align-middle text-center text-sm">
-                            {usuario.admin && <span className="badge badge-sm bg-gradient-success">Admin</span>}
-                            {!usuario.admin && <span className="badge badge-sm bg-gradient-secondary">Usuário</span>}
-                        </td>
                         <td className="align-middle">
-                            <Link href={`/admin/usuarios/editar/${usuario.id}`} className="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Editar
-                            </Link>
+                            <p className="text-secondary font-weight-bold text-xs" style={{ cursor: 'pointer' }} onClick={() => handleResetarSenha(usuario)} data-toggle="tooltip" data-original-title="Edit user">
+                            Resetar senha
+                            </p>
+                            <p className="text-danger font-weight-bold text-xs" style={{ cursor: 'pointer' }} onClick={() => handleDeletarConta(usuario)} data-toggle="tooltip" data-original-title="Edit user">
+                            Excluir conta
+                            </p>
                         </td>
                         </tr>
 
