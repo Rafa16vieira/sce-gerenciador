@@ -3585,7 +3585,7 @@ textarea.form-control.is-invalid {
   --bs-btn-font-size: 0.875rem;
   --bs-btn-font-weight: 700;
   --bs-btn-line-height: 1.5;
-  --bs-btn-color: #67748e;
+  --bs-btn-color: #8e6781;
   --bs-btn-bg: transparent;
   --bs-btn-border-width: 1px;
   --bs-btn-border-color: transparent;
@@ -3661,7 +3661,7 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #000;
-  --bs-btn-bg: #5e72e4;
+  --bs-btn-bg: #c7ffd8;
   --bs-btn-border-color: #5e72e4;
   --bs-btn-hover-color: #000;
   --bs-btn-hover-bg: #7687e8;
@@ -10548,7 +10548,7 @@ fieldset:disabled .btn {
 }
 
 .text-muted {
-  color: #6c757d !important;
+  color: #98ff98 !important;
 }
 
 .text-black-50 {
@@ -10580,7 +10580,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-  background-color: #5e72e4 !important;
+  background-color: #b6f1b6 !important;
 }
 
 .bg-secondary {
@@ -20280,7 +20280,7 @@ fieldset:disabled .btn {
   margin-bottom: 1rem;
   letter-spacing: -0.025rem;
   text-transform: none;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px rgba(122, 204, 143, 0.65), 0 1px 3px rgba(31, 51, 36, 0.55);
 }
 
 .btn:not([class*="btn-outline-"]) {
@@ -20386,7 +20386,7 @@ fieldset:disabled .btn {
 
 .btn-primary:hover,
 .btn.bg-gradient-primary:hover {
-  background-color: #5e72e4;
+  background-color: #c7ffd8;
   border-color: #5e72e4;
 }
 
@@ -20401,15 +20401,16 @@ fieldset:disabled .btn {
 .btn.bg-gradient-primary:not(:disabled):not(.disabled).active,
 .btn.bg-gradient-primary:not(:disabled):not(.disabled):active,
 .show>.btn.bg-gradient-primary.dropdown-toggle {
-  color: color-yiq(#5e72e4);
-  background-color: #5e72e4;
+  color: color-yiq(#000);
+  background-color: #7acc8f;
 }
 
 .btn-primary.focus,
 .btn-primary:focus,
 .btn.bg-gradient-primary.focus,
 .btn.bg-gradient-primary:focus {
-  color: #fff;
+  color: #1f3324;
+  background-color: #7acc8f;
 }
 
 .btn-outline-primary {
@@ -20728,12 +20729,12 @@ fieldset:disabled .btn {
 
 .btn-primary,
 .btn.bg-gradient-primary {
-  color: #fff;
+  color: #1f3324;
 }
 
 .btn-primary:hover,
 .btn.bg-gradient-primary:hover {
-  color: #fff;
+  color: #1f3324;
 }
 
 .btn-secondary,
@@ -20845,7 +20846,7 @@ fieldset:disabled .btn {
 }
 
 .card {
-  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+  box-shadow: 0 0 2rem 0 rgba(13, 73, 36, 0.86);
 }
 
 .card .card-header {
@@ -24992,7 +24993,7 @@ p {
 }
 
 .text-gradient.text-primary {
-  background-image: linear-gradient(310deg, #5e72e4, #825ee4);
+  background-image: linear-gradient(310deg, #5c996b, #1f3324);
 }
 
 .text-gradient.text-info {
@@ -25024,7 +25025,7 @@ p {
 }
 
 .text-muted {
-  color: #67748e !important;
+  color: #c7ffd8 !important;
 }
 
 .text-black-50 {

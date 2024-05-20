@@ -36,8 +36,8 @@ export default function FormularioEditarPage ({params}: any) {
     // ======================================================================
     return (
       <main>
-            <AdminHeader titulo={`Editar formulário da Tela #${params.id[0]}`}/>
-            <h6>Tela #{params.id[0]}</h6>    
+            <AdminHeader titulo={`Checagem dos dados registrados`}/>
+            <h6>Evidência #{params.id[0]}</h6>    
 
             { mensagem != null && mensagem == false && <p className="alert alert-danger">Não foi possível editar formulário</p>}
             { mensagem != null && mensagem == true && <p className="alert alert-success">Editado com sucesso</p>}

@@ -40,7 +40,7 @@ export default function AdminLayout({children}: any) {
                             <li className="nav-item">
                                 <Link className={'nav-link ' + (url.includes('dashboard') ? 'active': '')} href="/admin/dashboard">
                                     <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i className="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                                    <i className="ni ni-tv-2 text-success text-sm opacity-10"></i>
                                     </div>
                                     <span className="nav-link-text ms-1">Dashboard</span>
                                 </Link>
@@ -50,7 +50,7 @@ export default function AdminLayout({children}: any) {
                             <li className="nav-item">
                                 <Link className={'nav-link ' + (url.endsWith('usuarios') ? 'active': '')} href="/admin/usuarios">
                                     <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i className="ni ni-bullet-list-67 text-warning text-sm opacity-10"></i>
+                                    <i className="ni ni-bullet-list-67 text-muted text-sm opacity-10"></i>
                                     </div>
                                     <span className="nav-link-text ms-1">Usuarios</span>
                                 </Link>
@@ -60,7 +60,7 @@ export default function AdminLayout({children}: any) {
                             <li className="nav-item">
                                 <Link className={'nav-link ' + (url.includes('formularios') ? 'active': '')} href="/admin/formularios">
                                     <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i className="ni ni-bullet-list-67 text-warning text-sm opacity-10"></i>
+                                    <i className="ni ni-single-copy-04 text-muted text-sm opacity-10"></i>
                                     </div>
                                     <span className="nav-link-text ms-1">Formulários</span>
                                 </Link>
@@ -101,7 +101,7 @@ export default function AdminLayout({children}: any) {
                             <div className="row align-items-center justify-content-lg-between">
                                 <div className="col-lg-6 mb-lg-0 mb-4">
                                     <p className="copyright text-center text-white text-sm text-lg-start">
-                                        Template Argon adaptado por CWG
+                                        Template Argon adaptado por RVA
                                     </p>
                                 </div>
                             </div>
